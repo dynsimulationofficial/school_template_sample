@@ -3,12 +3,1385 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Landing page moderne pour école, collège, lycée ou institut universitaire avec admissions, programmes, actualités, galerie, contact et paiement en ligne." />
+  <meta name="description" content="Landing page premium pour école, collège, lycée ou institut avec admissions, programmes, campus, actualités et contact." />
   <title>Académie Horizon | École & Collège Moderne</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="preload" as="image" href="assets/hero-students.jpg" />
-  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap');
+
+    :root {
+      --navy: #071122;
+      --navy-2: #0b1830;
+      --navy-3: #101f3c;
+      --white: #ffffff;
+      --text: #f8fbff;
+      --muted: #aab7d6;
+      --dark-text: #0f172a;
+      --soft-text: #64748b;
+      --gold: #f7b955;
+      --gold-2: #f48b22;
+      --blue: #3b82f6;
+      --cyan: #22d3ee;
+      --purple: #9b5cff;
+      --green: #12c99b;
+      --border: rgba(255, 255, 255, .16);
+      --glass: rgba(255, 255, 255, .08);
+      --glass-2: rgba(255, 255, 255, .12);
+      --shadow: 0 24px 80px rgba(0,0,0,.35);
+      --shadow-soft: 0 18px 40px rgba(15,23,42,.14);
+      --radius: 28px;
+      --container: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 5%, rgba(247, 185, 85, .18), transparent 28%),
+        radial-gradient(circle at 85% 15%, rgba(59, 130, 246, .24), transparent 30%),
+        radial-gradient(circle at 70% 70%, rgba(155, 92, 255, .16), transparent 34%),
+        linear-gradient(140deg, #060b17 0%, #071122 38%, #101f3c 74%, #07111f 100%);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,.12) 1px, transparent 1.4px);
+      background-size: 82px 82px, 82px 82px, 28px 28px;
+      opacity: .32;
+      mask-image: linear-gradient(to bottom, #000 0%, transparent 86%);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(120deg, rgba(255,255,255,.04) 0 1px, transparent 1px 10px);
+      opacity: .14;
+      mix-blend-mode: screen;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .section-pad {
+      padding: 100px 0;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 16px;
+      top: -80px;
+      z-index: 999;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--dark-text);
+      font-weight: 800;
+    }
+
+    .skip-link:focus {
+      top: 16px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 16px 0;
+      backdrop-filter: blur(24px);
+      background:
+        linear-gradient(135deg, rgba(7, 17, 34, .92), rgba(11, 24, 48, .72)),
+        radial-gradient(circle at 10% 0%, rgba(247, 185, 85, .22), transparent 34%);
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 20px 70px rgba(0,0,0,.28);
+    }
+
+    .site-header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, transparent, rgba(255,255,255,.09), transparent),
+        repeating-linear-gradient(135deg, rgba(255,255,255,.045) 0 1px, transparent 1px 10px);
+      opacity: .28;
+    }
+
+    .navbar {
+      position: relative;
+      width: min(var(--container), calc(100% - 40px));
+      margin: 0 auto;
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 12px 16px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(255,255,255,.11), rgba(255,255,255,.04));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 18px 60px rgba(0,0,0,.22);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+
+    .brand-mark {
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      border-radius: 17px;
+      font-family: "Playfair Display", serif;
+      font-size: 1.72rem;
+      font-weight: 900;
+      color: #121827;
+      letter-spacing: -0.08em;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.72), rgba(255,255,255,.05)),
+        conic-gradient(from 220deg, #fff2b0, #f7b955, #f48b22, #3b82f6, #fff2b0);
+      border: 1px solid rgba(255,255,255,.36);
+      box-shadow: 0 14px 35px rgba(247,185,85,.32), inset 0 1px 0 rgba(255,255,255,.8);
+    }
+
+    .brand-text {
+      display: grid;
+      line-height: 1.12;
+    }
+
+    .brand-text strong {
+      font-size: 1rem;
+      letter-spacing: -.03em;
+    }
+
+    .brand-text small {
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 5px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .nav-links a {
+      position: relative;
+      overflow: hidden;
+      padding: 12px 14px;
+      border-radius: 999px;
+      color: #dce8ff;
+      font-size: .9rem;
+      font-weight: 800;
+      transition: .25s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,.18), rgba(247,185,85,.16));
+      transition: .25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+      transform: translateY(-1px);
+    }
+
+    .nav-links a:hover::after {
+      opacity: 1;
+    }
+
+    .nav-cta,
+    .btn,
+    .whatsapp-btn {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 14px 22px;
+      border: 0;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 900;
+      letter-spacing: -.02em;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+
+    .nav-cta,
+    .btn-primary {
+      color: #111827;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.45), transparent 30%),
+        repeating-linear-gradient(135deg, rgba(255,255,255,.18) 0 1px, transparent 1px 8px),
+        linear-gradient(135deg, #ffe08a, #f7b955 44%, #f48b22 100%);
+      border: 1px solid rgba(255,255,255,.34);
+      box-shadow: 0 18px 42px rgba(247,185,85,.32), inset 0 1px 0 rgba(255,255,255,.72);
+    }
+
+    .nav-cta::before,
+    .btn-primary::before,
+    .btn-white::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,.55) 45%, transparent 68%);
+      transform: translateX(-120%);
+      transition: transform .65s ease;
+    }
+
+    .nav-cta:hover::before,
+    .btn-primary:hover::before,
+    .btn-white:hover::before {
+      transform: translateX(120%);
+    }
+
+    .nav-cta:hover,
+    .btn:hover,
+    .whatsapp-btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-soft {
+      color: #eaf2ff;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.04)),
+        repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 1px, transparent 1px 8px);
+      border: 1px solid rgba(255,255,255,.17);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 16px 34px rgba(0,0,0,.16);
+    }
+
+    .btn-white {
+      color: #111827;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.7), rgba(255,255,255,.15)),
+        linear-gradient(135deg, #fff4bb, #f7b955 48%, #f48b22);
+      box-shadow: 0 20px 45px rgba(247,185,85,.30);
+    }
+
+    .hero {
+      position: relative;
+      padding: 92px 0 58px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      left: -170px;
+      bottom: -140px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(247,185,85,.22), transparent 64%),
+        repeating-conic-gradient(from 0deg, rgba(255,255,255,.09) 0deg 1deg, transparent 1deg 10deg);
+      filter: blur(.2px);
+      opacity: .74;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 680px;
+      height: 680px;
+      right: -210px;
+      top: -150px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(59,130,246,.28), transparent 64%);
+      opacity: .72;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      color: var(--gold);
+      font-size: .76rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 2px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    .hero h1,
+    .section-heading h2,
+    .feature-content h2,
+    .digital-card h2,
+    .cta-box h2,
+    .contact-info h2 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 900;
+      line-height: .98;
+      letter-spacing: -.055em;
+    }
+
+    .hero h1 {
+      max-width: 660px;
+      font-size: clamp(3rem, 6vw, 5.8rem);
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+    }
+
+    .hero-lead {
+      max-width: 590px;
+      color: #d4def5;
+      font-size: 1.08rem;
+      line-height: 1.82;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: #d8e6ff;
+      font-size: .9rem;
+      font-weight: 800;
+    }
+
+    .trust-row span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .trust-row span::before {
+      content: "✦";
+      color: var(--gold);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 520px;
+      border-radius: 38px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.07);
+      box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,.2);
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background:
+        linear-gradient(90deg, rgba(7,17,34,.72), transparent 42%, rgba(7,17,34,.14)),
+        linear-gradient(0deg, rgba(7,17,34,.8), transparent 42%);
+      pointer-events: none;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      min-height: 520px;
+      object-fit: cover;
+      transform: scale(1.03);
+    }
+
+    .floating-card {
+      position: absolute;
+      z-index: 3;
+      right: 24px;
+      width: 190px;
+      padding: 20px;
+      border-radius: 22px;
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,.18);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.14), rgba(255,255,255,.05)),
+        repeating-linear-gradient(135deg, rgba(255,255,255,.06) 0 1px, transparent 1px 9px);
+      box-shadow: 0 20px 50px rgba(0,0,0,.28);
+    }
+
+    .floating-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: .98rem;
+    }
+
+    .floating-card span {
+      color: #d3ddf6;
+      font-size: .78rem;
+      line-height: 1.55;
+    }
+
+    .floating-card::after {
+      content: "→";
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,.1);
+      color: var(--white);
+    }
+
+    .card-one {
+      top: 118px;
+      box-shadow: 0 20px 50px rgba(59,130,246,.22);
+    }
+
+    .card-two {
+      top: 270px;
+      box-shadow: 0 20px 50px rgba(155,92,255,.24);
+    }
+
+    .stats-section {
+      padding: 24px 0 70px;
+      position: relative;
+      z-index: 3;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .stat-card {
+      position: relative;
+      overflow: hidden;
+      padding: 26px 24px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,.15);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.11), rgba(255,255,255,.045)),
+        radial-gradient(circle at 20% 0%, rgba(59,130,246,.22), transparent 42%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 18px 44px rgba(0,0,0,.20);
+    }
+
+    .stat-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg, transparent, rgba(255,255,255,.09), transparent);
+      transform: translateX(-120%);
+      transition: .7s ease;
+    }
+
+    .stat-card:hover::after {
+      transform: translateX(120%);
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 2.65rem;
+      line-height: 1;
+      color: #7cc7ff;
+      letter-spacing: -.07em;
+      margin-bottom: 8px;
+    }
+
+    .stat-card:nth-child(2) strong { color: #b78cff; }
+    .stat-card:nth-child(3) strong { color: var(--gold); }
+    .stat-card:nth-child(4) strong { color: #46e1f2; }
+
+    .stat-card span {
+      color: #dce7ff;
+      font-weight: 800;
+      font-size: .92rem;
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .section-heading.align-left {
+      margin-inline: 0;
+      text-align: left;
+    }
+
+    .section-heading h2,
+    .feature-content h2,
+    .digital-card h2,
+    .contact-info h2 {
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      margin-bottom: 18px;
+    }
+
+    .section-heading p,
+    .feature-content p,
+    .digital-card p,
+    .contact-info p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .program-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 300px;
+      padding: 28px;
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,.15);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 22px 55px rgba(0,0,0,.22);
+      transition: .25s ease;
+    }
+
+    .program-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255,255,255,.26);
+    }
+
+    .program-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(255,255,255,.22), transparent 34%),
+        repeating-linear-gradient(135deg, rgba(255,255,255,.045) 0 1px, transparent 1px 9px);
+      opacity: .8;
+      pointer-events: none;
+    }
+
+    .program-card > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .gradient-blue {
+      background: linear-gradient(150deg, rgba(27,105,214,.38), rgba(6,18,39,.95));
+    }
+
+    .gradient-purple {
+      background: linear-gradient(150deg, rgba(124,58,237,.40), rgba(13,15,44,.95));
+    }
+
+    .gradient-orange {
+      background: linear-gradient(150deg, rgba(247,139,34,.33), rgba(18,22,34,.95));
+    }
+
+    .gradient-green {
+      background: linear-gradient(150deg, rgba(18,201,155,.30), rgba(7,28,39,.95));
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 28px;
+      border-radius: 50%;
+      color: var(--white);
+      font-weight: 900;
+      border: 1px solid rgba(255,255,255,.26);
+      background: rgba(255,255,255,.10);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.18);
+    }
+
+    .program-card h3 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.45rem;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    .program-card p {
+      color: #d4def5;
+      font-size: .94rem;
+      line-height: 1.72;
+      margin-bottom: 20px;
+    }
+
+    .program-list {
+      display: grid;
+      gap: 7px;
+      color: #dce8ff;
+      font-size: .86rem;
+      font-weight: 700;
+    }
+
+    .program-list span::before {
+      content: "✓";
+      color: var(--gold);
+      margin-right: 8px;
+    }
+
+    .program-link {
+      display: inline-flex;
+      margin-top: 22px;
+      color: var(--gold);
+      font-weight: 900;
+      font-size: .85rem;
+    }
+
+    .feature-band {
+      padding: 58px 0;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1.04fr .96fr;
+      gap: 0;
+      border-radius: 34px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.14);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.035));
+      box-shadow: var(--shadow);
+    }
+
+    .feature-media img {
+      width: 100%;
+      height: 100%;
+      min-height: 470px;
+      object-fit: cover;
+    }
+
+    .feature-content {
+      position: relative;
+      padding: 58px;
+      background:
+        radial-gradient(circle at 100% 15%, rgba(34,211,238,.10), transparent 30%),
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.035));
+    }
+
+    .feature-content::after {
+      content: "";
+      position: absolute;
+      right: 34px;
+      top: 38px;
+      width: 170px;
+      height: 170px;
+      opacity: .22;
+      background-image: radial-gradient(circle, rgba(255,255,255,.5) 1px, transparent 1.5px);
+      background-size: 16px 16px;
+    }
+
+    .check-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .check-list span {
+      position: relative;
+      padding-left: 38px;
+      color: #e8f1ff;
+      font-weight: 800;
+    }
+
+    .check-list span::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: -2px;
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--cyan);
+      border: 1px solid rgba(34,211,238,.55);
+      background: rgba(34,211,238,.10);
+    }
+
+    .campus-btn {
+      margin-top: 30px;
+    }
+
+    .admission-layout {
+      display: grid;
+      grid-template-columns: .86fr 1.14fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .timeline-card {
+      position: relative;
+      padding: 34px;
+      border-radius: 34px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.1), rgba(255,255,255,.04)),
+        radial-gradient(circle at 0% 0%, rgba(155,92,255,.14), transparent 32%);
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: var(--shadow);
+    }
+
+    .timeline-card::before {
+      content: "";
+      position: absolute;
+      left: 58px;
+      top: 52px;
+      bottom: 52px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--blue), var(--purple), var(--gold), var(--green));
+      opacity: .86;
+    }
+
+    .timeline-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 50px 1fr;
+      gap: 22px;
+      padding: 18px 0;
+    }
+
+    .timeline-item > span {
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--white);
+      font-weight: 900;
+      border: 1px solid rgba(255,255,255,.28);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.2), rgba(255,255,255,.06)),
+        linear-gradient(135deg, rgba(59,130,246,.65), rgba(155,92,255,.45));
+      box-shadow: 0 12px 30px rgba(59,130,246,.24);
+    }
+
+    .timeline-item:nth-child(3) > span {
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.2), rgba(255,255,255,.06)),
+        linear-gradient(135deg, rgba(247,185,85,.75), rgba(244,139,34,.44));
+    }
+
+    .timeline-item:nth-child(4) > span {
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.2), rgba(255,255,255,.06)),
+        linear-gradient(135deg, rgba(18,201,155,.75), rgba(34,211,238,.34));
+    }
+
+    .timeline-item h3 {
+      font-family: "Playfair Display", serif;
+      margin-bottom: 5px;
+      font-size: 1.25rem;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+      line-height: 1.72;
+    }
+
+    .soft-bg {
+      color: var(--dark-text);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(247,185,85,.12), transparent 30%),
+        linear-gradient(180deg, #f8fbff 0%, #eef3fb 100%);
+    }
+
+    .soft-bg .section-heading p,
+    .soft-bg .eyebrow {
+      color: var(--gold-2);
+    }
+
+    .soft-bg .section-heading h2 {
+      color: var(--dark-text);
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .news-card {
+      overflow: hidden;
+      border-radius: 22px;
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(15,23,42,.08);
+      box-shadow: var(--shadow-soft);
+      transition: .25s ease;
+    }
+
+    .news-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 24px 55px rgba(15,23,42,.16);
+    }
+
+    .news-card img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+    }
+
+    .news-card div {
+      padding: 24px;
+    }
+
+    .news-card span {
+      display: inline-flex;
+      margin-bottom: 9px;
+      color: var(--blue);
+      font-size: .72rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .news-card h3 {
+      color: var(--dark-text);
+      font-size: 1.25rem;
+      margin-bottom: 9px;
+      letter-spacing: -.04em;
+    }
+
+    .news-card p {
+      color: var(--soft-text);
+      font-size: .94rem;
+      line-height: 1.65;
+    }
+
+    .digital-grid {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .digital-card,
+    .mini-feature-grid article {
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,.14);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.04)),
+        radial-gradient(circle at 0% 0%, rgba(34,211,238,.16), transparent 36%);
+      box-shadow: var(--shadow);
+    }
+
+    .digital-card {
+      position: relative;
+      overflow: hidden;
+      padding: 42px;
+      min-height: 360px;
+    }
+
+    .digital-card::after {
+      content: "";
+      position: absolute;
+      right: 34px;
+      bottom: 28px;
+      width: 230px;
+      height: 140px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.20);
+      background:
+        linear-gradient(135deg, rgba(59,130,246,.32), rgba(155,92,255,.18)),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.10) 0 1px, transparent 1px 16px);
+      box-shadow: 0 20px 50px rgba(0,0,0,.26);
+      opacity: .72;
+    }
+
+    .digital-card::before {
+      content: "";
+      position: absolute;
+      left: 42px;
+      bottom: 48px;
+      width: 220px;
+      height: 120px;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 25% 30%, rgba(247,185,85,.38), transparent 9%),
+        radial-gradient(circle at 55% 50%, rgba(34,211,238,.38), transparent 10%),
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.025));
+      border: 1px solid rgba(255,255,255,.14);
+      opacity: .75;
+    }
+
+    .pill {
+      display: inline-flex;
+      margin-bottom: 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: var(--gold);
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: rgba(247,185,85,.10);
+      border: 1px solid rgba(247,185,85,.26);
+    }
+
+    .mini-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .mini-feature-grid article {
+      padding: 30px;
+      transition: .25s ease;
+    }
+
+    .mini-feature-grid article:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,255,255,.24);
+    }
+
+    .mini-feature-grid span {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px;
+      border-radius: 18px;
+      color: var(--gold);
+      font-weight: 900;
+      font-size: 1.25rem;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.14), rgba(255,255,255,.045)),
+        radial-gradient(circle, rgba(247,185,85,.22), transparent 64%);
+      border: 1px solid rgba(255,255,255,.16);
+    }
+
+    .mini-feature-grid h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.35rem;
+      margin-bottom: 8px;
+    }
+
+    .mini-feature-grid p {
+      color: var(--muted);
+      font-size: .94rem;
+    }
+
+    .cta-section {
+      padding: 42px 0;
+    }
+
+    .cta-box {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      padding: 48px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,.16);
+      background:
+        radial-gradient(circle at 6% 60%, rgba(247,185,85,.24), transparent 22%),
+        radial-gradient(circle at 94% 40%, rgba(155,92,255,.28), transparent 28%),
+        repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 1px, transparent 1px 10px),
+        linear-gradient(135deg, #0a1230, #141b39 48%, #291832);
+      box-shadow: var(--shadow);
+    }
+
+    .cta-box::before {
+      content: "AH";
+      position: absolute;
+      right: 28px;
+      bottom: -34px;
+      font-family: "Playfair Display", serif;
+      font-size: 11rem;
+      color: rgba(247,185,85,.08);
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .cta-box h2 {
+      max-width: 720px;
+      font-size: clamp(2rem, 3vw, 3.2rem);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .contact-card {
+      margin-top: 14px;
+      padding: 20px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.14);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.12);
+    }
+
+    .contact-card strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--gold);
+      font-size: .86rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .contact-card span,
+    .contact-card a {
+      color: #e5eeff;
+      font-weight: 700;
+    }
+
+    .whatsapp-btn {
+      width: 100%;
+      margin-top: 16px;
+      color: var(--white);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.04)),
+        linear-gradient(135deg, #0fcf84, #119b6d);
+      box-shadow: 0 18px 40px rgba(18,201,155,.24);
+    }
+
+    .contact-form {
+      padding: 30px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,.15);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+    }
+
+    .contact-form label {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 16px;
+      color: #dce7ff;
+      font-weight: 900;
+      font-size: .9rem;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      color: var(--text);
+      font: inherit;
+      padding: 15px 16px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 16px;
+      outline: none;
+      background: rgba(255,255,255,.08);
+      transition: .2s ease;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: rgba(220,231,255,.58);
+    }
+
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus {
+      border-color: rgba(247,185,85,.62);
+      box-shadow: 0 0 0 4px rgba(247,185,85,.12);
+    }
+
+    .contact-form .btn {
+      width: 100%;
+      margin-top: 4px;
+    }
+
+    .form-note {
+      color: var(--muted);
+      font-size: .82rem;
+      margin-top: 14px;
+      text-align: center;
+    }
+
+    .site-footer {
+      position: relative;
+      overflow: hidden;
+      padding: 44px 0;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(247,185,85,.14), transparent 28%),
+        repeating-linear-gradient(135deg, rgba(255,255,255,.035) 0 1px, transparent 1px 10px),
+        linear-gradient(135deg, #050914, #0b1830);
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .8fr .8fr .9fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .footer-brand {
+      margin-bottom: 16px;
+    }
+
+    .footer-about {
+      color: var(--muted);
+      font-size: .92rem;
+      max-width: 300px;
+    }
+
+    .footer-col h4 {
+      margin-bottom: 12px;
+      color: var(--gold);
+      font-size: .88rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .footer-col a,
+    .footer-col p {
+      display: block;
+      margin: 8px 0;
+      color: #cbd8f3;
+      font-size: .9rem;
+    }
+
+    .footer-bottom {
+      width: min(var(--container), calc(100% - 40px));
+      margin: 34px auto 0;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+
+    .footer-bottom div {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1020px) {
+      .navbar {
+        border-radius: 28px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .hero-grid,
+      .feature-grid,
+      .admission-layout,
+      .digital-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid,
+      .program-grid,
+      .news-grid,
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-visual {
+        min-height: 460px;
+      }
+
+      .hero-visual img {
+        min-height: 460px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .container,
+      .navbar,
+      .footer-bottom {
+        width: min(100% - 26px, var(--container));
+      }
+
+      .site-header {
+        padding: 10px 0;
+      }
+
+      .navbar {
+        padding: 12px;
+      }
+
+      .brand-text strong {
+        font-size: .9rem;
+      }
+
+      .brand-mark {
+        width: 44px;
+        height: 44px;
+      }
+
+      .nav-cta {
+        width: 100%;
+      }
+
+      .nav-links a {
+        padding: 9px 10px;
+        font-size: .78rem;
+      }
+
+      .hero {
+        padding-top: 58px;
+      }
+
+      .section-pad {
+        padding: 70px 0;
+      }
+
+      .hero h1 {
+        font-size: 2.72rem;
+      }
+
+      .hero-lead {
+        font-size: .98rem;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .trust-row {
+        gap: 12px;
+        font-size: .8rem;
+      }
+
+      .hero-visual,
+      .hero-visual img {
+        min-height: 410px;
+      }
+
+      .floating-card {
+        width: 160px;
+        right: 14px;
+        padding: 16px;
+      }
+
+      .card-one { top: 70px; }
+      .card-two { top: 205px; }
+
+      .stats-grid,
+      .program-grid,
+      .news-grid,
+      .mini-feature-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-content,
+      .digital-card,
+      .cta-box,
+      .contact-form {
+        padding: 28px;
+      }
+
+      .cta-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+
+      .timeline-card {
+        padding: 24px 18px;
+      }
+
+      .timeline-card::before {
+        left: 42px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 46px 1fr;
+        gap: 16px;
+      }
+
+      .timeline-item > span {
+        width: 46px;
+        height: 46px;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <a class="skip-link" href="#main">Aller au contenu</a>
 
@@ -35,21 +1408,19 @@
   </header>
 
   <main id="main">
-    <section class="hero section-pad">
-      <div class="hero-glow hero-glow-one" aria-hidden="true"></div>
-      <div class="hero-glow hero-glow-two" aria-hidden="true"></div>
-
+    <section class="hero">
       <div class="container hero-grid">
         <div class="hero-content">
           <p class="eyebrow">Maternelle • Primaire • Collège • Lycée • Université</p>
-          <h1>Une landing page moderne pour présenter votre établissement et convertir plus de parents.</h1>
+          <h1>Une éducation moderne pour construire l’avenir <span>de chaque apprenant.</span></h1>
           <p class="hero-lead">
-            Un modèle professionnel inspiré d’un survey de plusieurs écoles : présentation, programmes, admissions, documents, galerie, WhatsApp, contact et paiement des frais scolaires.
+            Académie Horizon accompagne chaque apprenant dans son parcours avec des programmes d’excellence,
+            un encadrement de qualité et un environnement sécurisé.
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#admissions">Demander une admission</a>
-            <a class="btn btn-soft" href="#programmes">Voir les formations</a>
+            <a class="btn btn-primary" href="#admissions">Demander une admission →</a>
+            <a class="btn btn-soft" href="#programmes">Voir les formations →</a>
           </div>
 
           <div class="trust-row" aria-label="Points forts">
@@ -63,11 +1434,11 @@
           <img src="assets/hero-students.jpg" alt="Vrais étudiants en classe moderne" />
           <div class="floating-card card-one">
             <strong>Préinscription</strong>
-            <span>Formulaire rapide</span>
+            <span>Formulaire en ligne rapide et sécurisé</span>
           </div>
           <div class="floating-card card-two">
             <strong>Paiement</strong>
-            <span>Mobile money & banque</span>
+            <span>Payez les frais en toute sécurité</span>
           </div>
         </div>
       </div>
@@ -97,10 +1468,10 @@
     <section class="section-pad" id="programmes">
       <div class="container">
         <div class="section-heading">
-          <p class="eyebrow">Programmes & formations</p>
-          <h2>Des parcours adaptés aux élèves, étudiants et professionnels.</h2>
+          <p class="eyebrow">Nos offres</p>
+          <h2>Programmes & formations</h2>
           <p>
-            Présentez clairement vos cycles, filières ou formations pour aider les parents et apprenants à choisir rapidement.
+            Des parcours adaptés à chaque niveau pour révéler le potentiel de chaque apprenant.
           </p>
         </div>
 
@@ -109,21 +1480,48 @@
             <div class="card-icon">01</div>
             <h3>Maternelle & Primaire</h3>
             <p>Apprentissage bilingue, bases solides, activités d’éveil et suivi individualisé.</p>
+            <div class="program-list">
+              <span>Éveil & découverte</span>
+              <span>Apprentissage ludique</span>
+              <span>Encadrement bienveillant</span>
+            </div>
+            <a class="program-link" href="#contact">En savoir plus →</a>
           </article>
+
           <article class="program-card gradient-purple">
             <div class="card-icon">02</div>
             <h3>Collège & Lycée</h3>
             <p>Premier et second cycle, enseignement général, technique, examens et orientation.</p>
+            <div class="program-list">
+              <span>Enseignements généraux</span>
+              <span>Sciences & technologies</span>
+              <span>Préparation examens</span>
+            </div>
+            <a class="program-link" href="#contact">En savoir plus →</a>
           </article>
+
           <article class="program-card gradient-orange">
             <div class="card-icon">03</div>
             <h3>Formations professionnelles</h3>
             <p>DQP, BTS, langues, informatique, gestion, économie et parcours métier.</p>
+            <div class="program-list">
+              <span>Métiers d’avenir</span>
+              <span>Stages pratiques</span>
+              <span>Insertion professionnelle</span>
+            </div>
+            <a class="program-link" href="#contact">En savoir plus →</a>
           </article>
+
           <article class="program-card gradient-green">
             <div class="card-icon">04</div>
             <h3>Institut universitaire</h3>
             <p>Licence, master, sciences sociales, technologies, management et relations internationales.</p>
+            <div class="program-list">
+              <span>Licences & Masters</span>
+              <span>Recherche & innovation</span>
+              <span>Partenariats internationaux</span>
+            </div>
+            <a class="program-link" href="#contact">En savoir plus →</a>
           </article>
         </div>
       </div>
@@ -134,11 +1532,13 @@
         <div class="feature-media">
           <img src="assets/campus-walkway.jpg" alt="Vrais étudiants marchant sur un campus" />
         </div>
+
         <div class="feature-content">
-          <p class="eyebrow">Vie scolaire & campus</p>
-          <h2>Une expérience éducative structurée, rassurante et visible.</h2>
+          <p class="eyebrow">Vie scolaire</p>
+          <h2>Un cadre d’excellence pour s’épanouir et réussir.</h2>
           <p>
-            Le site met en avant la sécurité, la localisation, la galerie photo, les communiqués et les documents importants pour réduire les appels répétitifs et améliorer la confiance.
+            Nos campus offrent un environnement sécurisé, moderne et stimulant pour l’apprentissage,
+            la créativité et le développement personnel.
           </p>
 
           <div class="check-list">
@@ -147,6 +1547,8 @@
             <span>Documents téléchargeables</span>
             <span>Communiqués officiels</span>
           </div>
+
+          <a class="btn btn-soft campus-btn" href="#actualites">Découvrir notre campus →</a>
         </div>
       </div>
     </section>
@@ -154,10 +1556,11 @@
     <section class="section-pad" id="admissions">
       <div class="container admission-layout">
         <div class="section-heading align-left">
-          <p class="eyebrow">Admissions & préinscriptions</p>
-          <h2>Un processus simple pour les parents et apprenants.</h2>
+          <p class="eyebrow">Inscriptions</p>
+          <h2>Admissions & préinscriptions</h2>
           <p>
-            Ajoutez vos conditions d’admission, pièces à fournir, frais, calendrier et un bouton de contact direct par WhatsApp.
+            Un processus simple, transparent et 100% en ligne pour aider les parents et apprenants
+            à faire leur demande rapidement.
           </p>
         </div>
 
@@ -166,28 +1569,31 @@
             <span>1</span>
             <div>
               <h3>Choisir le programme</h3>
-              <p>Le parent consulte les cycles ou formations disponibles.</p>
+              <p>Sélectionnez le cycle ou la formation qui correspond à vos objectifs.</p>
             </div>
           </div>
+
           <div class="timeline-item">
             <span>2</span>
             <div>
               <h3>Préinscription en ligne</h3>
-              <p>Un formulaire de contact permet de demander plus d’informations.</p>
+              <p>Remplissez le formulaire en ligne avec les informations nécessaires.</p>
             </div>
           </div>
+
           <div class="timeline-item">
             <span>3</span>
             <div>
               <h3>Validation administrative</h3>
-              <p>L’établissement confirme les documents, frais et rendez-vous.</p>
+              <p>Notre équipe étudie votre dossier et vous contacte pour validation.</p>
             </div>
           </div>
+
           <div class="timeline-item">
             <span>4</span>
             <div>
               <h3>Paiement & inscription</h3>
-              <p>Option pour intégrer Mobile Money, virement ou paiement en ligne.</p>
+              <p>Effectuez le paiement en ligne et finalisez votre inscription.</p>
             </div>
           </div>
         </div>
@@ -197,33 +1603,36 @@
     <section class="section-pad soft-bg" id="actualites">
       <div class="container">
         <div class="section-heading">
-          <p class="eyebrow">Actualités & communiqués</p>
-          <h2>Gardez les parents informés sans compliquer la gestion.</h2>
+          <p class="eyebrow">Actualités</p>
+          <h2>Actualités & communiqués</h2>
+          <p>Gardez les parents informés avec des cartes modernes, claires et faciles à lire.</p>
         </div>
 
         <div class="news-grid">
           <article class="news-card">
             <img src="assets/classroom-discussion.jpg" alt="Vrais étudiants discutant en amphithéâtre" />
             <div>
-              <span>Communiqué</span>
+              <span>15 Mai 2026</span>
               <h3>Ouverture des préinscriptions</h3>
-              <p>Publiez les dates importantes, conditions et pièces à fournir.</p>
+              <p>Les préinscriptions pour l’année scolaire sont officiellement ouvertes.</p>
             </div>
           </article>
+
           <article class="news-card">
             <img src="assets/student-classroom.jpg" alt="Vrai étudiant en classe" />
             <div>
-              <span>Vie scolaire</span>
+              <span>08 Mai 2026</span>
               <h3>Activités pédagogiques</h3>
-              <p>Montrez les ateliers, sorties éducatives et projets des élèves.</p>
+              <p>Retour en images sur nos activités scientifiques et projets innovants.</p>
             </div>
           </article>
+
           <article class="news-card">
             <img src="assets/teacher-classroom.jpg" alt="Vrai enseignant avec étudiants en classe" />
             <div>
-              <span>Service</span>
+              <span>02 Mai 2026</span>
               <h3>Paiement des frais</h3>
-              <p>Expliquez les moyens de paiement acceptés et rassurez les parents.</p>
+              <p>Nouveaux moyens de paiement en ligne sécurisés et disponibles.</p>
             </div>
           </article>
         </div>
@@ -232,34 +1641,38 @@
 
     <section class="section-pad" id="digital">
       <div class="container digital-grid">
-        <div class="digital-card highlight-card">
+        <div class="digital-card">
           <span class="pill">Digital school</span>
           <h2>Les fonctionnalités prioritaires du site.</h2>
           <p>
-            Ce modèle couvre les besoins les plus fréquents des établissements : visibilité, confiance, admission, contact, documents et suivi des paiements.
+            Un site conçu pour faciliter la communication, la gestion et le suivi au quotidien :
+            contact, documents, galerie et paiement.
           </p>
         </div>
 
         <div class="mini-feature-grid">
           <article>
-            <span>✓</span>
+            <span>✉</span>
             <h3>Contact rapide</h3>
-            <p>Formulaire, téléphone, e-mail et WhatsApp.</p>
+            <p>Contactez-nous facilement via le formulaire ou le chat en ligne.</p>
           </article>
+
           <article>
-            <span>✓</span>
+            <span>▣</span>
             <h3>Documents</h3>
-            <p>Fiches d’inscription, calendriers et règlements.</p>
+            <p>Téléchargez les documents officiels et formulaires nécessaires.</p>
           </article>
+
           <article>
-            <span>✓</span>
+            <span>▧</span>
             <h3>Galerie</h3>
-            <p>Images campus, activités et infrastructures.</p>
+            <p>Découvrez nos activités, événements et la vie sur nos campus.</p>
           </article>
+
           <article>
-            <span>✓</span>
+            <span>▤</span>
             <h3>Paiement</h3>
-            <p>Bloc prêt pour Mobile Money, virement ou API.</p>
+            <p>Payez les frais scolaires en ligne de manière sécurisée.</p>
           </article>
         </div>
       </div>
@@ -269,33 +1682,37 @@
       <div class="container cta-box">
         <div>
           <p class="eyebrow">Prêt pour une présence digitale professionnelle ?</p>
-          <h2>Transformez votre école ou collège en une marque éducative visible.</h2>
+          <h2>Transformons ensemble votre école en une marque éducative visible et inspirante.</h2>
         </div>
-        <a class="btn btn-white" href="#contact">Contacter l’administration</a>
+        <a class="btn btn-white" href="#contact">Contacter l’administration →</a>
       </div>
     </section>
 
     <section class="section-pad" id="contact">
       <div class="container contact-grid">
         <div class="contact-info">
-          <p class="eyebrow">Contact</p>
-          <h2>Parlez avec notre équipe administrative.</h2>
+          <p class="eyebrow">Contactez-nous</p>
+          <h2>Nous sommes à votre écoute.</h2>
           <p>
-            Remplacez ces informations par celles de votre établissement : adresse, téléphone, e-mail, WhatsApp et horaires.
+            Remplacez ces informations par celles de votre établissement : adresse, téléphone,
+            e-mail, WhatsApp et horaires.
           </p>
 
           <div class="contact-card">
             <strong>Adresse</strong>
             <span>Yaoundé, Cameroun — Quartier central</span>
           </div>
+
           <div class="contact-card">
             <strong>Téléphone</strong>
             <a href="tel:+237690000000">+237 690 000 000</a>
           </div>
+
           <div class="contact-card">
             <strong>E-mail</strong>
             <a href="mailto:contact@academiehorizon.cm">contact@academiehorizon.cm</a>
           </div>
+
           <a class="whatsapp-btn" href="https://wa.me/237690000000" aria-label="Contacter par WhatsApp">Écrire sur WhatsApp</a>
         </div>
 
@@ -304,10 +1721,12 @@
             Nom complet
             <input type="text" name="name" placeholder="Votre nom" required />
           </label>
+
           <label>
             Téléphone
             <input type="tel" name="phone" placeholder="+237 ..." required />
           </label>
+
           <label>
             Programme souhaité
             <select name="program" required>
@@ -318,11 +1737,13 @@
               <option>Université / Institut</option>
             </select>
           </label>
+
           <label>
             Message
             <textarea name="message" rows="5" placeholder="Votre message..."></textarea>
           </label>
-          <button class="btn btn-primary" type="submit">Envoyer la demande</button>
+
+          <button class="btn btn-primary" type="submit">Envoyer la demande →</button>
           <p class="form-note">HTML/CSS only : connectez ce formulaire à votre backend ou Google Form plus tard.</p>
         </form>
       </div>
@@ -339,12 +1760,38 @@
             <small>Excellence • Discipline • Innovation</small>
           </span>
         </a>
+        <p class="footer-about">Une présence digitale premium pour présenter votre établissement avec confiance.</p>
       </div>
+
+      <div class="footer-col">
+        <h4>Programmes</h4>
+        <a href="#programmes">Maternelle & Primaire</a>
+        <a href="#programmes">Collège & Lycée</a>
+        <a href="#programmes">Formations professionnelles</a>
+        <a href="#programmes">Institut universitaire</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Admissions</h4>
+        <a href="#admissions">Conditions d’admission</a>
+        <a href="#admissions">Préinscription en ligne</a>
+        <a href="#admissions">Frais de scolarité</a>
+        <a href="#contact">FAQ</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>Yaoundé, Cameroun</p>
+        <a href="tel:+237690000000">+237 690 000 000</a>
+        <a href="mailto:contact@academiehorizon.cm">contact@academiehorizon.cm</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
       <p>© 2026 Académie Horizon. Tous droits réservés.</p>
-      <div class="footer-links">
-        <a href="#programmes">Programmes</a>
-        <a href="#admissions">Admissions</a>
-        <a href="#contact">Contact</a>
+      <div>
+        <a href="#">Mentions légales</a>
+        <a href="#">Politique de confidentialité</a>
       </div>
     </div>
   </footer>
