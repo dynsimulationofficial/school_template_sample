@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
   <meta name="description" content="Landing page premium pour école, collège, lycée ou institut avec admissions, programmes, campus, galerie, actualités et contact." />
   <title>Académie Horizon | École & Collège Moderne</title>
 
@@ -49,6 +49,7 @@
       background: #f8fbff;
       overflow-x: hidden;
       line-height: 1.6;
+      padding-bottom: 70px;
     }
 
     a {
@@ -288,6 +289,120 @@
         linear-gradient(135deg, rgba(255,255,255,.7), rgba(255,255,255,.15)),
         linear-gradient(135deg, #fff4bb, #f7b955 48%, #f48b22);
       box-shadow: 0 16px 38px rgba(247,185,85,.28);
+    }
+
+    /* Mobile Menu Button (3 dots) */
+    .mobile-menu-btn {
+      display: none;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .mobile-menu-btn:hover {
+      background: rgba(255,255,255,.2);
+    }
+
+    /* Mobile Navigation Dropdown */
+    .mobile-nav {
+      display: none;
+      position: absolute;
+      top: 80px;
+      right: 20px;
+      width: 250px;
+      background: rgba(7, 17, 34, 0.98);
+      backdrop-filter: blur(30px);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 24px;
+      padding: 16px;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 0 30px 60px rgba(0,0,0,.5);
+      z-index: 200;
+    }
+
+    .mobile-nav.active {
+      display: flex;
+    }
+
+    .mobile-nav a {
+      color: #e2e8f0;
+      font-weight: 700;
+      padding: 12px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.05);
+      transition: 0.2s;
+      font-size: 0.9rem;
+    }
+
+    .mobile-nav a:hover {
+      background: rgba(247,185,85,.2);
+      color: white;
+    }
+
+    .mobile-nav .mobile-cta {
+      background: linear-gradient(135deg, #ffe08a, #f7b955);
+      color: #111827;
+      text-align: center;
+      font-weight: 900;
+      margin-top: 8px;
+    }
+
+    /* Floating Orizon Pay Button */
+    .floating-orizon-pay {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: white;
+      font-weight: 800;
+      font-size: 0.9rem;
+      padding: 14px 24px;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 20px 40px rgba(0,0,0,.4), 0 0 0 2px rgba(247,185,85,.5);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      letter-spacing: 0.5px;
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(247,185,85,.4);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .floating-orizon-pay:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 25px 50px rgba(247,185,85,.3);
+      animation: none;
+    }
+
+    .floating-orizon-pay .pay-icon {
+      background: #f7b955;
+      color: #0f172a;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.1rem;
     }
 
     /* --- HERO (BLANC) --- */
@@ -1416,16 +1531,23 @@
       transform: translateY(0);
     }
 
+    /* ==================== RESPONSIVE MEDIA QUERIES ==================== */
     @media (max-width: 1020px) {
-      .navbar {
-        border-radius: 28px;
-        flex-wrap: wrap;
+      /* Hide desktop nav links and CTA on tablet/mobile */
+      .nav-links,
+      .nav-cta {
+        display: none !important;
       }
 
-      .nav-links {
-        order: 3;
-        width: 100%;
+      /* Show mobile menu button (3 dots) */
+      .mobile-menu-btn {
+        display: inline-flex;
+        align-items: center;
         justify-content: center;
+      }
+
+      .navbar {
+        border-radius: 28px;
         flex-wrap: wrap;
       }
 
@@ -1455,6 +1577,13 @@
       .hero-visual img {
         min-height: 400px;
       }
+
+      .floating-orizon-pay {
+        bottom: 20px;
+        right: 20px;
+        padding: 12px 20px;
+        font-size: 0.85rem;
+      }
     }
 
     @media (max-width: 680px) {
@@ -1470,6 +1599,7 @@
 
       .navbar {
         padding: 10px;
+        border-radius: 50px;
       }
 
       .brand-text strong {
@@ -1481,13 +1611,21 @@
         height: 40px;
       }
 
-      .nav-cta {
-        width: 100%;
+      .mobile-menu-btn {
+        font-size: 1.3rem;
+        padding: 8px 14px;
       }
 
-      .nav-links a {
-        padding: 8px 10px;
-        font-size: .75rem;
+      .mobile-nav {
+        top: 70px;
+        right: 13px;
+        width: 220px;
+        padding: 12px;
+      }
+
+      .mobile-nav a {
+        padding: 10px 14px;
+        font-size: .85rem;
       }
 
       .hero {
@@ -1576,6 +1714,20 @@
         height: 40px;
         font-size: 0.8rem;
       }
+
+      .floating-orizon-pay {
+        bottom: 16px;
+        right: 16px;
+        padding: 10px 18px;
+        font-size: 0.8rem;
+        gap: 6px;
+      }
+
+      .floating-orizon-pay .pay-icon {
+        width: 26px;
+        height: 26px;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
@@ -1603,6 +1755,22 @@
       </div>
 
       <a class="nav-cta" href="#admissions">Préinscription</a>
+
+      <!-- Mobile 3-dots menu button -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu mobile" aria-expanded="false">
+        •••
+      </button>
+    </nav>
+
+    <!-- Mobile dropdown navigation -->
+    <nav class="mobile-nav" id="mobileNav" aria-label="Menu mobile">
+      <a href="#programmes">Programmes</a>
+      <a href="#admissions">Admissions</a>
+      <a href="#campus">Campus</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#actualites">Actualités</a>
+      <a href="#contact">Contact</a>
+      <a href="#admissions" class="mobile-cta">Préinscription</a>
     </nav>
   </header>
 
@@ -2036,13 +2204,82 @@
         <a href="#">Politique de confidentialité</a>
       </div>
     </div>
-
-    <!-- Horizon brand badge (non-clickable) -->
-    <div style="display: flex; justify-content: center; margin-top: 20px;">
-      <div class="footer-brand-badge">
-        <span>HORIZON</span>
-      </div>
-    </div>
   </footer>
+
+  <!-- Floating Orizon Pay Button -->
+  <button class="floating-orizon-pay" id="orizonPayBtn" aria-label="Orizon Pay - Paiement sécurisé">
+    <span class="pay-icon">💰</span> Orizon Pay
+  </button>
+
+  <script>
+    (function() {
+      // Mobile menu toggle functionality
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileNav = document.getElementById('mobileNav');
+      
+      if (mobileMenuBtn && mobileNav) {
+        // Toggle menu on button click
+        mobileMenuBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const isActive = mobileNav.classList.contains('active');
+          
+          if (isActive) {
+            mobileNav.classList.remove('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+          } else {
+            mobileNav.classList.add('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'true');
+          }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+          if (!mobileMenuBtn.contains(event.target) && !mobileNav.contains(event.target)) {
+            mobileNav.classList.remove('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        // Close menu when a link is clicked
+        const mobileLinks = mobileNav.querySelectorAll('a');
+        mobileLinks.forEach(function(link) {
+          link.addEventListener('click', function() {
+            mobileNav.classList.remove('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      // Orizon Pay floating button functionality
+      const orizonPayBtn = document.getElementById('orizonPayBtn');
+      if (orizonPayBtn) {
+        orizonPayBtn.addEventListener('click', function() {
+          // Scroll to admissions/payment section
+          const admissionsSection = document.getElementById('admissions');
+          if (admissionsSection) {
+            admissionsSection.scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+          
+          // Optional: Show payment modal or redirect (customize as needed)
+          // alert('Orizon Pay : Système de paiement sécurisé. Redirection vers la passerelle de paiement...');
+        });
+      }
+
+      // Close mobile menu on window resize (if resizing to desktop)
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 1020) {
+          if (mobileNav) {
+            mobileNav.classList.remove('active');
+          }
+          if (mobileMenuBtn) {
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+          }
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
