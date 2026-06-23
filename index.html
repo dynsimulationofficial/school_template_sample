@@ -2,12 +2,12 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-  <meta name="description" content="Landing page premium pour école, collège, lycée ou institut avec admissions, programmes, campus, actualités et contact." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <meta name="description" content="Landing page premium pour école, collège, lycée ou institut avec admissions, programmes, campus, galerie, actualités et contact." />
   <title>Académie Horizon | École & Collège Moderne</title>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&family=Playfair+Display:wght@700;800;900&display=swap');
 
     :root {
       --navy: #071122;
@@ -1228,67 +1228,26 @@
       box-shadow: 0 16px 34px rgba(18,201,155,.22);
     }
 
-    .contact-form {
-      padding: 26px;
+    .map-container {
       border-radius: 26px;
+      overflow: hidden;
       border: 1px solid rgba(255,255,255,.15);
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
       box-shadow: var(--shadow);
-    }
-
-    .contact-form label {
-      display: grid;
-      gap: 7px;
-      margin-bottom: 14px;
-      color: #dce7ff;
-      font-weight: 900;
-      font-size: .85rem;
-    }
-
-    .contact-form input,
-    .contact-form select,
-    .contact-form textarea {
-      width: 100%;
-      color: var(--text);
-      font: inherit;
-      padding: 13px 14px;
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 14px;
-      outline: none;
+      height: 100%;
+      min-height: 380px;
       background: rgba(255,255,255,.08);
-      transition: .2s ease;
-      font-size: 0.9rem;
     }
 
-    .contact-form input::placeholder,
-    .contact-form textarea::placeholder {
-      color: rgba(220,231,255,.58);
-    }
-
-    .contact-form input:focus,
-    .contact-form select:focus,
-    .contact-form textarea:focus {
-      border-color: rgba(247,185,85,.62);
-      box-shadow: 0 0 0 4px rgba(247,185,85,.12);
-    }
-
-    .contact-form .btn {
+    .map-container iframe {
       width: 100%;
-      margin-top: 4px;
-    }
-
-    .form-note {
-      color: var(--muted);
-      font-size: .78rem;
-      margin-top: 12px;
-      text-align: center;
+      height: 100%;
+      border: 0;
     }
 
     .site-footer {
       position: relative;
       overflow: hidden;
-      padding: 36px 0;
+      padding: 36px 0 20px;
       background:
         radial-gradient(circle at 10% 0%, rgba(247,185,85,.14), transparent 28%),
         repeating-linear-gradient(135deg, rgba(255,255,255,.035) 0 1px, transparent 1px 10px),
@@ -1339,12 +1298,122 @@
       gap: 16px;
       color: var(--muted);
       font-size: .82rem;
+      flex-wrap: wrap;
     }
 
     .footer-bottom div {
       display: flex;
       gap: 16px;
       flex-wrap: wrap;
+    }
+
+    .footer-brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(4px);
+      font-weight: 700;
+      color: #e5eeff;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+      box-shadow: 0 8px 20px rgba(0,0,0,.2);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .footer-brand-badge span {
+      font-family: "Playfair Display", serif;
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: var(--gold);
+    }
+
+    /* GALLERY STYLES - UNIQUE LAYOUT */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .gallery-item {
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid rgba(15,23,42,.08);
+      background: rgba(255,255,255,.7);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 16px 32px rgba(15,23,42,.06);
+      transition: transform .3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow .3s ease;
+      position: relative;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 24px 48px rgba(15,23,42,.14);
+      z-index: 5;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.07);
+    }
+
+    /* Varied heights for masonry-like feel */
+    .gallery-item:nth-child(1) { grid-row: span 2; }
+    .gallery-item:nth-child(2) { grid-row: span 1; }
+    .gallery-item:nth-child(3) { grid-row: span 1; }
+    .gallery-item:nth-child(4) { grid-row: span 2; }
+    .gallery-item:nth-child(5) { grid-row: span 1; }
+    .gallery-item:nth-child(6) { grid-row: span 2; }
+    .gallery-item:nth-child(7) { grid-row: span 1; }
+    .gallery-item:nth-child(8) { grid-row: span 1; }
+    .gallery-item:nth-child(9) { grid-row: span 2; }
+    .gallery-item:nth-child(10) { grid-row: span 1; }
+
+    /* Overlay effect */
+    .gallery-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15,23,42,.7), transparent 60%);
+      opacity: 0;
+      transition: opacity .3s ease;
+      pointer-events: none;
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 16px;
+      left: 18px;
+      right: 18px;
+      color: white;
+      font-weight: 700;
+      font-size: 0.9rem;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: .3s ease;
+      pointer-events: none;
+    }
+
+    .gallery-item:hover .gallery-caption {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     @media (max-width: 1020px) {
@@ -1373,6 +1442,10 @@
       .news-grid,
       .footer-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
       }
 
       .hero-visual {
@@ -1464,6 +1537,10 @@
         grid-template-columns: 1fr;
       }
 
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
       .feature-content,
       .digital-card,
       .cta-box,
@@ -1478,6 +1555,7 @@
 
       .footer-bottom {
         flex-direction: column;
+        align-items: flex-start;
       }
 
       .timeline-card-navy {
@@ -1519,6 +1597,7 @@
         <a href="#programmes">Programmes</a>
         <a href="#admissions">Admissions</a>
         <a href="#campus">Campus</a>
+        <a href="#galerie">Galerie</a>
         <a href="#actualites">Actualités</a>
         <a href="#contact">Contact</a>
       </div>
@@ -1672,7 +1751,7 @@
             <span>Communiqués officiels</span>
           </div>
 
-          <a class="btn btn-soft campus-btn" href="#actualites">Découvrir notre campus →</a>
+          <a class="btn btn-soft campus-btn" href="#galerie">Découvrir notre campus →</a>
         </div>
       </div>
     </section>
@@ -1725,7 +1804,61 @@
       </div>
     </section>
 
-    <!-- 6. ACTUALITÉS (BLANC) -->
+    <!-- 6. GALERIE (BLANC) - 10 images, layout unique -->
+    <section class="section-pad bg-white-soft" id="galerie">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">En images</p>
+          <h2>Galerie de l'établissement</h2>
+          <p>Un aperçu vivant de notre environnement d'apprentissage, de nos activités et de la vie sur le campus.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="assets/classroom-discussion.jpg" alt="Discussion en classe" />
+            <span class="gallery-caption">Débats & échanges</span>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/student-classroom.jpg" alt="Étudiant en classe" />
+            <span class="gallery-caption">Concentration</span>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/img1.png" alt="Enseignant avec étudiants" />
+            <span class="gallery-caption">Encadrement</span>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/img2.png" alt="Allée du campus" />
+            <span class="gallery-caption">Campus arboré</span>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/img3.png" alt="Étudiants en amphithéâtre" />
+            <span class="gallery-caption">Amphithéâtre</span>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/img4.png" alt="Bibliothèque" />
+            <span class="gallery-caption">Bibliothèque</span>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/img5.png" alt="Laboratoire" />
+            <span class="gallery-caption">Sciences</span>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/img6.png" alt="Sport" />
+            <span class="gallery-caption">Activités sportives</span>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/img7.png" alt="Jardin" />
+            <span class="gallery-caption">Espaces verts</span>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/classroom-discussion.jpg" alt="Événement" />
+            <span class="gallery-caption">Cérémonie</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. ACTUALITÉS (BLANC) -->
     <section class="section-pad bg-white-soft" id="actualites">
       <div class="container">
         <div class="section-heading">
@@ -1765,7 +1898,7 @@
       </div>
     </section>
 
-    <!-- 7. DIGITAL (NAVY) -->
+    <!-- 8. DIGITAL (NAVY) -->
     <section class="section-pad bg-navy" id="digital">
       <div class="container digital-grid">
         <div class="digital-card">
@@ -1810,13 +1943,13 @@
       <div class="container cta-box">
         <div>
           <p class="eyebrow eyebrow-navy">Prêt pour une présence digitale professionnelle ?</p>
-          <h2>Transformons ensemble votre école en une marque éducative visible et inspirante.</h2>
+          <h2 style="color: white;">Transformons ensemble votre école en une marque éducative visible et inspirante.</h2>
         </div>
         <a class="btn btn-white" href="#contact">Contacter l'administration →</a>
       </div>
     </section>
 
-    <!-- 8. CONTACT (NAVY) -->
+    <!-- 9. CONTACT (NAVY) avec carte -->
     <section class="section-pad contact-bg-navy" id="contact">
       <div class="container contact-grid">
         <div class="contact-info">
@@ -1845,36 +1978,16 @@
           <a class="whatsapp-btn" href="https://wa.me/237690000000" aria-label="Contacter par WhatsApp">Écrire sur WhatsApp</a>
         </div>
 
-        <form class="contact-form" action="#" method="post">
-          <label>
-            Nom complet
-            <input type="text" name="name" placeholder="Votre nom" required />
-          </label>
-
-          <label>
-            Téléphone
-            <input type="tel" name="phone" placeholder="+237 ..." required />
-          </label>
-
-          <label>
-            Programme souhaité
-            <select name="program" required>
-              <option value="">Choisir un programme</option>
-              <option>Maternelle / Primaire</option>
-              <option>Collège / Lycée</option>
-              <option>Formation professionnelle</option>
-              <option>Université / Institut</option>
-            </select>
-          </label>
-
-          <label>
-            Message
-            <textarea name="message" rows="5" placeholder="Votre message..."></textarea>
-          </label>
-
-          <button class="btn btn-primary" type="submit">Envoyer la demande →</button>
-          <p class="form-note">HTML/CSS only : connectez ce formulaire à votre backend ou Google Form plus tard.</p>
-        </form>
+        <div class="map-container">
+          <!-- Carte centrée sur Yaoundé, Cameroun -->
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39705.67887748555!2d11.50243345!3d3.848031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bc1b3b8e5f8f%3A0x2f9c3a5c0f4b1e2!2sYaound%C3%A9%2C%20Cameroun!5e0!3m2!1sfr!2scm!4v1696000000000" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Carte de localisation de l'Académie Horizon à Yaoundé">
+          </iframe>
+        </div>
       </div>
     </section>
   </main>
@@ -1921,6 +2034,13 @@
       <div>
         <a href="#">Mentions légales</a>
         <a href="#">Politique de confidentialité</a>
+      </div>
+    </div>
+
+    <!-- Horizon brand badge (non-clickable) -->
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+      <div class="footer-brand-badge">
+        <span>HORIZON</span>
       </div>
     </div>
   </footer>
