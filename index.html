@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
-  <meta name="description" content="Landing page premium pour école, collège, lycée ou institut avec admissions, programmes, campus, galerie, actualités et contact." />
-  <title>Académie Horizon | École & Collège Moderne</title>
+  <meta name="description" content="Site premium multi-page pour école, collège, lycée ou institut avec accueil, présentation, programmes, admissions, campus, galerie, actualités, contact et pages détail des formations." />
+  <title>Académie Horizon | Site scolaire premium multi-pages</title>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&family=Playfair+Display:wght@700;800;900&display=swap');
@@ -444,6 +444,43 @@
 
     .floating-call {
       background: linear-gradient(135deg, #3b82f6, #0f172a);
+    }
+
+    /* Real separate icons for WhatsApp + Call buttons */
+    .contact-action-icon {
+      flex: 0 0 auto;
+      width: 30px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,.95);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 8px 18px rgba(0,0,0,.14);
+    }
+
+    .contact-action-icon svg {
+      width: 17px;
+      height: 17px;
+      display: block;
+      fill: currentColor;
+    }
+
+    .whatsapp-action-icon {
+      color: #25d366;
+    }
+
+    .call-action-icon {
+      color: #2563eb;
+    }
+
+    .floating-contact-btn span:last-child,
+    .whatsapp-btn span:last-child {
+      line-height: 1;
+    }
+
+    .whatsapp-btn {
+      gap: 10px;
     }
 
     /* --- HERO (BLANC) --- */
@@ -1575,6 +1612,331 @@
       color: var(--gold);
     }
 
+
+
+    /* ==================== MULTI-PAGE LANDING UPGRADE ==================== */
+    .about-school-section {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 8% 10%, rgba(59,130,246,.08), transparent 32%),
+        radial-gradient(circle at 92% 15%, rgba(247,185,85,.12), transparent 34%),
+        linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .about-story-card,
+    .about-highlight-card,
+    .page-tile,
+    .programme-detail-card,
+    .admission-form-card,
+    .contact-form-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 26px;
+      border: 1px solid rgba(15,23,42,.10);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.95), rgba(255,255,255,.72)),
+        radial-gradient(circle at 0% 0%, rgba(59,130,246,.12), transparent 34%);
+      box-shadow: 0 18px 45px rgba(15,23,42,.10), inset 0 1px 0 rgba(255,255,255,.9);
+    }
+
+    .about-story-card {
+      padding: 36px;
+    }
+
+    .about-story-card h2,
+    .page-map-section h2,
+    .programme-detail-section h2 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -.04em;
+      color: var(--dark-text);
+      font-size: clamp(2rem, 3.6vw, 3.45rem);
+      margin-bottom: 14px;
+    }
+
+    .about-story-card p {
+      color: #475569;
+      font-size: .95rem;
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+
+    .about-values {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .about-values span {
+      padding: 12px 12px;
+      border-radius: 16px;
+      color: #0f172a;
+      background: rgba(15,23,42,.045);
+      border: 1px solid rgba(15,23,42,.08);
+      font-size: .78rem;
+      font-weight: 900;
+    }
+
+    .about-highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .about-highlight-card {
+      min-height: 190px;
+      padding: 24px;
+      transition: .25s ease;
+    }
+
+    .about-highlight-card:hover,
+    .page-tile:hover,
+    .programme-detail-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 24px 56px rgba(15,23,42,.14);
+    }
+
+    .about-highlight-card strong {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      margin-bottom: 16px;
+      border-radius: 16px;
+      color: #111827;
+      background: linear-gradient(135deg, #ffe08a, #f7b955, #f48b22);
+      box-shadow: 0 12px 28px rgba(247,185,85,.22);
+      font-size: 1.1rem;
+    }
+
+    .about-highlight-card h3 {
+      color: var(--dark-text);
+      font-size: 1rem;
+      margin-bottom: 7px;
+      letter-spacing: -.03em;
+    }
+
+    .about-highlight-card p {
+      color: #64748b;
+      font-size: .86rem;
+      line-height: 1.6;
+    }
+
+    .page-map-section {
+      background:
+        radial-gradient(circle at 5% 10%, rgba(247,185,85,.10), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(59,130,246,.12), transparent 32%),
+        linear-gradient(135deg, #f8fbff 0%, #eef3fb 100%);
+    }
+
+    .page-map-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .page-tile {
+      min-height: 178px;
+      padding: 24px;
+      transition: .25s ease;
+    }
+
+    .page-tile::after {
+      content: "";
+      position: absolute;
+      right: -34px;
+      bottom: -34px;
+      width: 105px;
+      height: 105px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(247,185,85,.22), transparent 68%);
+    }
+
+    .page-tile span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      margin-bottom: 18px;
+      border-radius: 14px;
+      color: var(--white);
+      font-weight: 900;
+      background: linear-gradient(135deg, #0f172a, #3b82f6);
+    }
+
+    .page-tile h3 {
+      color: var(--dark-text);
+      font-size: 1rem;
+      margin-bottom: 7px;
+    }
+
+    .page-tile p {
+      color: #64748b;
+      font-size: .84rem;
+      line-height: 1.55;
+    }
+
+    .programme-detail-section {
+      background:
+        radial-gradient(circle at 12% 0%, rgba(34,211,238,.09), transparent 30%),
+        radial-gradient(circle at 88% 10%, rgba(247,185,85,.10), transparent 34%),
+        linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    }
+
+    .programme-detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .programme-detail-card {
+      padding: 28px;
+      transition: .25s ease;
+    }
+
+    .programme-detail-card .detail-badge {
+      display: inline-flex;
+      margin-bottom: 14px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      color: #111827;
+      background: linear-gradient(135deg, #fff2b0, #f7b955);
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .programme-detail-card h3 {
+      color: var(--dark-text);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.55rem;
+      line-height: 1.08;
+      margin-bottom: 10px;
+    }
+
+    .programme-detail-card p {
+      color: #64748b;
+      font-size: .9rem;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .detail-meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 18px 0;
+    }
+
+    .detail-meta span {
+      padding: 11px 10px;
+      border-radius: 15px;
+      color: #334155;
+      background: rgba(15,23,42,.045);
+      border: 1px solid rgba(15,23,42,.08);
+      font-size: .76rem;
+      font-weight: 800;
+    }
+
+    .detail-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+
+    .programme-detail-card .check-list span {
+      color: #334155;
+    }
+
+    .programme-detail-card .check-list span::before {
+      color: var(--blue);
+      border-color: rgba(59,130,246,.35);
+      background: rgba(59,130,246,.08);
+    }
+
+    .admission-right {
+      display: grid;
+      gap: 16px;
+    }
+
+    .admission-form-card,
+    .contact-form-card {
+      padding: 24px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.045)),
+        radial-gradient(circle at 100% 0%, rgba(247,185,85,.12), transparent 35%);
+      border-color: rgba(255,255,255,.14);
+      box-shadow: var(--shadow);
+    }
+
+    .admission-form-card h3,
+    .contact-form-card h3 {
+      color: var(--white);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.35rem;
+      margin-bottom: 8px;
+    }
+
+    .admission-form-card p,
+    .contact-form-card p {
+      color: var(--muted);
+      font-size: .86rem;
+      margin-bottom: 14px;
+    }
+
+    .mini-form {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .mini-form input,
+    .mini-form select,
+    .mini-form textarea {
+      width: 100%;
+      min-height: 46px;
+      padding: 12px 14px;
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,.16);
+      color: #eaf2ff;
+      background: rgba(255,255,255,.07);
+      outline: none;
+      font: inherit;
+    }
+
+    .mini-form input::placeholder,
+    .mini-form textarea::placeholder {
+      color: rgba(234,242,255,.72);
+    }
+
+    .mini-form select option {
+      color: #0f172a;
+    }
+
+    .mini-form textarea,
+    .mini-form .form-full {
+      grid-column: 1 / -1;
+    }
+
+    .contact-stack {
+      display: grid;
+      gap: 16px;
+    }
+
     /* GALLERY STYLES - UNIQUE LAYOUT */
     .gallery-grid {
       display: grid;
@@ -1689,8 +2051,15 @@
       .stats-grid,
       .program-grid,
       .news-grid,
-      .footer-grid {
+      .footer-grid,
+      .page-map-grid,
+      .programme-detail-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid,
+      .admission-layout {
+        grid-template-columns: 1fr;
       }
 
       .gallery-grid {
@@ -1721,6 +2090,16 @@
         min-height: 42px;
         padding: 10px 15px;
         font-size: .82rem;
+      }
+
+      .contact-action-icon {
+        width: 28px;
+        height: 28px;
+      }
+
+      .contact-action-icon svg {
+        width: 16px;
+        height: 16px;
       }
     }
 
@@ -1809,7 +2188,16 @@
       .program-grid,
       .news-grid,
       .mini-feature-grid,
-      .footer-grid {
+      .footer-grid,
+      .page-map-grid,
+      .programme-detail-grid,
+      .about-highlight-grid,
+      .mini-form {
+        grid-template-columns: 1fr;
+      }
+
+      .about-values,
+      .detail-meta {
         grid-template-columns: 1fr;
       }
 
@@ -1820,7 +2208,12 @@
       .feature-content,
       .digital-card,
       .cta-box,
-      .contact-form {
+      .contact-form,
+      .about-story-card,
+      .programme-detail-card,
+      .page-tile,
+      .admission-form-card,
+      .contact-form-card {
         padding: 24px;
       }
 
@@ -2188,6 +2581,16 @@
         box-shadow: 0 12px 28px rgba(0,0,0,.24);
       }
 
+      .floating-contact-btn .contact-action-icon {
+        width: 26px;
+        height: 26px;
+      }
+
+      .floating-contact-btn .contact-action-icon svg {
+        width: 15px;
+        height: 15px;
+      }
+
       .floating-orizon-pay {
         right: 10px;
         bottom: calc(66px + env(safe-area-inset-bottom));
@@ -2226,6 +2629,109 @@
       }
     }
 
+    /* ==================== ABOUT SCHOOL NAVY THEME OVERRIDE ==================== */
+    #about-school.about-school-section {
+      background:
+        radial-gradient(circle at 8% 10%, rgba(247,185,85,.18), transparent 32%),
+        radial-gradient(circle at 92% 15%, rgba(59,130,246,.22), transparent 34%),
+        linear-gradient(140deg, #060b17 0%, #0b1830 38%, #101f3c 74%) !important;
+    }
+
+    #about-school .about-story-card {
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.04)),
+        radial-gradient(circle at 0% 0%, rgba(59,130,246,.18), transparent 34%) !important;
+      border: 1px solid rgba(255,255,255,.16) !important;
+      box-shadow: 0 18px 45px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.12) !important;
+    }
+
+    #about-school .about-story-card h2 {
+      color: var(--white) !important;
+    }
+
+    #about-school .about-story-card p {
+      color: #cbd5f0 !important;
+    }
+
+    #about-school .about-values span {
+      color: #eef3ff !important;
+      background: rgba(255,255,255,.10) !important;
+      border: 1px solid rgba(255,255,255,.20) !important;
+      font-weight: 800 !important;
+    }
+
+    #about-school .about-highlight-card {
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.04)),
+        radial-gradient(circle at 0% 0%, rgba(247,185,85,.14), transparent 34%) !important;
+      border: 1px solid rgba(255,255,255,.16) !important;
+      box-shadow: 0 18px 45px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.12) !important;
+    }
+
+    #about-school .about-highlight-card h3 {
+      color: var(--white) !important;
+    }
+
+    #about-school .about-highlight-card p {
+      color: #b9c7e6 !important;
+    }
+
+    #about-school .about-highlight-card strong {
+      color: #0f172a !important;
+      background: linear-gradient(135deg, #ffe08a, #f7b955, #f48b22) !important;
+      box-shadow: 0 12px 28px rgba(247,185,85,.35) !important;
+    }
+
+    #about-school .eyebrow {
+      color: var(--gold) !important;
+    }
+
+    #about-school .eyebrow::before {
+      background: linear-gradient(90deg, var(--gold), transparent) !important;
+    }
+/* CAMPUS/GALLERY BOX - NAVY BLUE DESIGN */
+.campus-bg-white .feature-grid {
+  border: 1px solid rgba(255, 255, 255, .16);
+  background:
+    radial-gradient(circle at 12% 10%, rgba(247,185,85,.16), transparent 28%),
+    radial-gradient(circle at 90% 20%, rgba(59,130,246,.22), transparent 34%),
+    linear-gradient(135deg, #071122 0%, #0b1830 45%, #101f3c 100%);
+  box-shadow: 0 28px 80px rgba(7, 17, 34, .36);
+}
+
+.campus-bg-white .feature-content {
+  background:
+    radial-gradient(circle at 100% 0%, rgba(59,130,246,.20), transparent 34%),
+    radial-gradient(circle at 15% 90%, rgba(247,185,85,.12), transparent 30%),
+    linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.025));
+}
+
+.campus-bg-white .feature-content h2 {
+  color: #ffffff;
+}
+
+.campus-bg-white .feature-content > p {
+  color: #aab7d6;
+}
+
+.campus-bg-white .check-list span {
+  color: #e8f1ff;
+}
+
+.campus-bg-white .check-list span::before {
+  color: #f7b955;
+  border: 1px solid rgba(247,185,85,.45);
+  background: rgba(247,185,85,.12);
+}
+
+.campus-bg-white .campus-btn {
+  color: #111827;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.45), transparent 30%),
+    linear-gradient(135deg, #ffe08a, #f7b955 48%, #f48b22);
+  border: 1px solid rgba(255,255,255,.30);
+  box-shadow: 0 16px 38px rgba(247,185,85,.24);
+}
   </style>
 </head>
 
@@ -2244,11 +2750,11 @@
 
       <div class="nav-links" aria-label="Liens rapides">
         <a href="#top" class="home-link">Home</a>
-        <a href="#programmes">Programmes</a>
+        <a href="#about-school">About</a>
+        <a href="#programmes">Courses</a>
         <a href="#admissions">Admissions</a>
-        <a href="#campus">Campus</a>
-        <a href="#galerie">Galerie</a>
-        <a href="#actualites">Actualités</a>
+        <a href="#campus">Campus/Gallery</a>
+        <a href="#actualites">News</a>
         <a href="#contact">Contact</a>
       </div>
 
@@ -2263,11 +2769,11 @@
     <!-- Mobile dropdown navigation -->
     <nav class="mobile-nav" id="mobileNav" aria-label="Menu mobile">
       <a href="#top" class="home-link">Home</a>
-      <a href="#programmes">Programmes</a>
+      <a href="#about-school">About the School</a>
+      <a href="#programmes">Programmes/Courses</a>
       <a href="#admissions">Admissions</a>
-      <a href="#campus">Campus</a>
-      <a href="#galerie">Galerie</a>
-      <a href="#actualites">Actualités</a>
+      <a href="#campus">Campus/Gallery</a>
+      <a href="#actualites">News</a>
       <a href="#contact">Contact</a>
       <a href="#admissions" class="mobile-cta">Préinscription</a>
     </nav>
@@ -2278,22 +2784,22 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-content">
-          <p class="eyebrow">Maternelle • Primaire • Collège • Lycée • Université</p>
-          <h1>Une éducation moderne pour construire l'avenir <span>de chaque apprenant.</span></h1>
+          <p class="eyebrow">Premium school website • Inspired multi-page structure</p>
+          <h1>Une plateforme scolaire premium pour présenter <span>chaque page avec impact.</span></h1>
           <p class="hero-lead">
-            Académie Horizon accompagne chaque apprenant dans son parcours avec des programmes d'excellence,
-            un encadrement de qualité et un environnement sécurisé.
+            Une landing page enrichie avec une structure complète : accueil, présentation de l'école, programmes,
+            admissions, campus, galerie, actualités, contact et pages détail pour chaque formation.
           </p>
 
           <div class="hero-actions">
             <a class="btn btn-primary" href="#admissions">Demander une admission →</a>
-            <a class="btn btn-soft" href="#programmes">Voir les formations →</a>
+            <a class="btn btn-soft" href="#site-pages">Voir la structure multi-pages →</a>
           </div>
 
           <div class="trust-row" aria-label="Points forts">
-            <span>+500 apprenants</span>
-            <span>Campus sécurisé</span>
-            <span>Suivi digital</span>
+            <span>Structure multi-pages</span>
+            <span>Programme detail pages</span>
+            <span>Admissions & contact</span>
           </div>
         </div>
 
@@ -2357,7 +2863,108 @@
       </div>
     </section>
 
-    <!-- 3. PROGRAMMES (NAVY) -->
+    <!-- 3. ABOUT THE SCHOOL (NAVY THEME) -->
+    <section class="section-pad about-school-section" id="about-school">
+      <div class="container about-grid">
+        <div class="about-story-card">
+          <p class="eyebrow">About the School</p>
+          <h2>Une histoire forte, une vision claire et une identité premium.</h2>
+          <p>
+            Cette section donne à l'établissement une vraie page de présentation comme un site scolaire complet :
+            histoire, mission, vision, valeurs, pédagogie et points forts.
+          </p>
+          <p>
+            Elle aide les parents à comprendre rapidement pourquoi choisir l'école, avant même d'aller vers les programmes ou les admissions.
+          </p>
+          <div class="about-values" aria-label="Valeurs de l'école">
+            <span>Excellence académique</span>
+            <span>Discipline & sécurité</span>
+            <span>Innovation digitale</span>
+          </div>
+        </div>
+
+        <div class="about-highlight-grid">
+          <article class="about-highlight-card">
+            <strong>01</strong>
+            <h3>Mission</h3>
+            <p>Former des apprenants confiants, responsables et prêts pour les défis modernes.</p>
+          </article>
+          <article class="about-highlight-card">
+            <strong>02</strong>
+            <h3>Vision</h3>
+            <p>Devenir une référence éducative avec une présence digitale professionnelle et claire.</p>
+          </article>
+          <article class="about-highlight-card">
+            <strong>03</strong>
+            <h3>Pédagogie</h3>
+            <p>Un apprentissage structuré, interactif et adapté à chaque niveau scolaire.</p>
+          </article>
+          <article class="about-highlight-card">
+            <strong>04</strong>
+            <h3>Encadrement</h3>
+            <p>Une équipe administrative et pédagogique disponible pour les parents et élèves.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. PREMIUM MULTI-PAGE STRUCTURE (BLANC) -->
+    <section class="section-pad page-map-section" id="site-pages">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Premium school website option</p>
+          <h2>Structure multi-pages inspirée des sites institutionnels.</h2>
+          <p>
+            Cette landing page montre maintenant toutes les pages prévues dans une version premium : chaque bloc peut devenir une page séparée plus tard.
+          </p>
+        </div>
+
+        <div class="page-map-grid">
+          <a class="page-tile" href="#top">
+            <span>H</span>
+            <h3>Home</h3>
+            <p>Hero premium, points forts, CTA admissions et aperçu global.</p>
+          </a>
+          <a class="page-tile" href="#about-school">
+            <span>A</span>
+            <h3>About the School</h3>
+            <p>Histoire, mission, vision, valeurs et présentation officielle.</p>
+          </a>
+          <a class="page-tile" href="#programmes">
+            <span>C</span>
+            <h3>Programmes/Courses</h3>
+            <p>Liste des cycles, cours, formations et orientation.</p>
+          </a>
+          <a class="page-tile" href="#admissions">
+            <span>AD</span>
+            <h3>Admissions</h3>
+            <p>Processus, formulaire rapide, documents et étapes.</p>
+          </a>
+          <a class="page-tile" href="#campus">
+            <span>CG</span>
+            <h3>Campus/Gallery</h3>
+            <p>Vie scolaire, campus, environnement et galerie photo.</p>
+          </a>
+          <a class="page-tile" href="#actualites">
+            <span>N</span>
+            <h3>News</h3>
+            <p>Actualités, communiqués, événements et annonces.</p>
+          </a>
+          <a class="page-tile" href="#contact">
+            <span>CT</span>
+            <h3>Contact</h3>
+            <p>Coordonnées, carte, WhatsApp, appel et formulaire.</p>
+          </a>
+          <a class="page-tile" href="#programme-details">
+            <span>PD</span>
+            <h3>Programme Detail Pages</h3>
+            <p>Sections détaillées individuelles pour chaque programme.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. PROGRAMMES (NAVY) -->
     <section class="section-pad bg-navy" id="programmes">
       <div class="container">
         <div class="section-heading">
@@ -2378,7 +2985,7 @@
               <span>Apprentissage ludique</span>
               <span>Encadrement bienveillant</span>
             </div>
-            <a class="program-link" href="#contact">En savoir plus →</a>
+            <a class="program-link" href="#programme-maternelle">Voir le détail →</a>
           </article>
 
           <article class="program-card gradient-purple">
@@ -2390,7 +2997,7 @@
               <span>Sciences & technologies</span>
               <span>Préparation examens</span>
             </div>
-            <a class="program-link" href="#contact">En savoir plus →</a>
+            <a class="program-link" href="#programme-college">Voir le détail →</a>
           </article>
 
           <article class="program-card gradient-orange">
@@ -2402,7 +3009,7 @@
               <span>Stages pratiques</span>
               <span>Insertion professionnelle</span>
             </div>
-            <a class="program-link" href="#contact">En savoir plus →</a>
+            <a class="program-link" href="#programme-professionnel">Voir le détail →</a>
           </article>
 
           <article class="program-card gradient-green">
@@ -2414,13 +3021,108 @@
               <span>Recherche & innovation</span>
               <span>Partenariats internationaux</span>
             </div>
-            <a class="program-link" href="#contact">En savoir plus →</a>
+            <a class="program-link" href="#programme-universitaire">Voir le détail →</a>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- 4. CAMPUS (BLANC) -->
+    <!-- 6. PROGRAMME DETAIL PAGES (BLANC) -->
+    <section class="section-pad programme-detail-section" id="programme-details">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Individual programme detail pages</p>
+          <h2>Pages détail pour chaque programme.</h2>
+          <p>
+            Ces blocs représentent les pages individuelles que tu voulais ajouter : chaque programme a maintenant sa propre section détaillée.
+          </p>
+        </div>
+
+        <div class="programme-detail-grid">
+          <article class="programme-detail-card" id="programme-maternelle">
+            <span class="detail-badge">Programme detail</span>
+            <h3>Maternelle & Primaire</h3>
+            <p>Un parcours complet pour construire les bases : lecture, écriture, calcul, éveil, langues et développement personnel.</p>
+            <div class="detail-meta">
+              <span>Niveau : Early years</span>
+              <span>Âge : 3–11 ans</span>
+              <span>Admission : ouverte</span>
+            </div>
+            <div class="check-list">
+              <span>Activités d'éveil et apprentissage ludique</span>
+              <span>Suivi individualisé et communication parents</span>
+              <span>Programme bilingue et bases académiques solides</span>
+            </div>
+            <div class="detail-actions">
+              <a class="btn btn-primary" href="#admissions">Demander l'admission</a>
+              <a class="btn btn-soft" href="#contact">Parler à l'école</a>
+            </div>
+          </article>
+
+          <article class="programme-detail-card" id="programme-college">
+            <span class="detail-badge">Programme detail</span>
+            <h3>Collège & Lycée</h3>
+            <p>Un cadre exigeant pour préparer les examens, l'orientation et les futures études supérieures.</p>
+            <div class="detail-meta">
+              <span>Niveau : Secondary</span>
+              <span>Cycles : 1er & 2nd</span>
+              <span>Examens : préparés</span>
+            </div>
+            <div class="check-list">
+              <span>Sciences, lettres, langues et technologie</span>
+              <span>Préparation aux examens officiels</span>
+              <span>Conseil d'orientation et suivi des performances</span>
+            </div>
+            <div class="detail-actions">
+              <a class="btn btn-primary" href="#admissions">Demander l'admission</a>
+              <a class="btn btn-soft" href="#contact">Parler à l'école</a>
+            </div>
+          </article>
+
+          <article class="programme-detail-card" id="programme-professionnel">
+            <span class="detail-badge">Programme detail</span>
+            <h3>Formations professionnelles</h3>
+            <p>Des formations orientées métier pour développer des compétences pratiques et préparer l'insertion professionnelle.</p>
+            <div class="detail-meta">
+              <span>Niveau : Pro</span>
+              <span>Approche : pratique</span>
+              <span>Stages : inclus</span>
+            </div>
+            <div class="check-list">
+              <span>Informatique, gestion, langues et métiers d'avenir</span>
+              <span>Projets pratiques et stages professionnels</span>
+              <span>Accompagnement vers l'emploi ou l'entrepreneuriat</span>
+            </div>
+            <div class="detail-actions">
+              <a class="btn btn-primary" href="#admissions">Demander l'admission</a>
+              <a class="btn btn-soft" href="#contact">Parler à l'école</a>
+            </div>
+          </article>
+
+          <article class="programme-detail-card" id="programme-universitaire">
+            <span class="detail-badge">Programme detail</span>
+            <h3>Institut universitaire</h3>
+            <p>Des parcours supérieurs pour développer expertise, leadership, recherche et ouverture internationale.</p>
+            <div class="detail-meta">
+              <span>Niveau : Higher ed</span>
+              <span>Diplômes : Licence/Master</span>
+              <span>Focus : innovation</span>
+            </div>
+            <div class="check-list">
+              <span>Management, technologie et sciences sociales</span>
+              <span>Recherche, innovation et projets académiques</span>
+              <span>Partenariats et ouverture internationale</span>
+            </div>
+            <div class="detail-actions">
+              <a class="btn btn-primary" href="#admissions">Demander l'admission</a>
+              <a class="btn btn-soft" href="#contact">Parler à l'école</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. CAMPUS/GALLERY (BLANC) -->
     <section class="feature-band campus-bg-white" id="campus">
       <div class="container feature-grid">
         <div class="feature-media">
@@ -2428,8 +3130,8 @@
         </div>
 
         <div class="feature-content">
-          <p class="eyebrow">Vie scolaire</p>
-          <h2>Un cadre d'excellence pour s'épanouir et réussir.</h2>
+          <p class="eyebrow">Campus/Gallery</p>
+          <h2>Un campus premium pour montrer la vie réelle de l'école.</h2>
           <p>
             Nos campus offrent un environnement sécurisé, moderne et stimulant pour l'apprentissage,
             la créativité et le développement personnel.
@@ -2459,7 +3161,8 @@
           </p>
         </div>
 
-        <div class="timeline-card-navy">
+        <div class="admission-right">
+          <div class="timeline-card-navy">
           <div class="timeline-item">
             <span>1</span>
             <div>
@@ -2490,6 +3193,25 @@
               <h3>Paiement & inscription</h3>
               <p>Effectuez le paiement en ligne et finalisez votre inscription.</p>
             </div>
+          </div>
+          </div>
+
+          <div class="admission-form-card">
+            <h3>Formulaire rapide d'admission</h3>
+            <p>Mini formulaire ajouté directement dans la landing page pour capturer les demandes.</p>
+            <form class="mini-form" action="#" method="post">
+              <input type="text" name="parent_name" placeholder="Nom du parent" aria-label="Nom du parent" />
+              <input type="tel" name="phone" placeholder="Téléphone / WhatsApp" aria-label="Téléphone" />
+              <input type="text" name="student_name" placeholder="Nom de l'apprenant" aria-label="Nom de l'apprenant" />
+              <select name="programme" aria-label="Programme souhaité">
+                <option value="">Programme souhaité</option>
+                <option>Maternelle & Primaire</option>
+                <option>Collège & Lycée</option>
+                <option>Formation professionnelle</option>
+                <option>Institut universitaire</option>
+              </select>
+              <button class="btn btn-primary form-full" type="submit">Envoyer la demande →</button>
+            </form>
           </div>
         </div>
       </div>
@@ -2594,10 +3316,10 @@
       <div class="container digital-grid">
         <div class="digital-card">
           <span class="pill">Digital school</span>
-          <h2>Les fonctionnalités prioritaires du site.</h2>
+          <h2>Les fonctionnalités prioritaires du site premium.</h2>
           <p>
-            Un site conçu pour faciliter la communication, la gestion et le suivi au quotidien :
-            contact, documents, galerie et paiement.
+            La version premium ne se limite pas à une simple page : elle organise l'école comme une vraie plateforme
+            avec pages dédiées, formulaires, galerie, actualités, contact rapide et paiement.
           </p>
         </div>
 
@@ -2666,18 +3388,46 @@
             <a href="mailto:contact@academiehorizon.cm">contact@academiehorizon.cm</a>
           </div>
 
-          <a class="whatsapp-btn" href="https://wa.me/237690000000" data-whatsapp-link aria-label="Contacter par WhatsApp">Écrire sur WhatsApp</a>
+          <a class="whatsapp-btn" href="https://wa.me/237690000000" data-whatsapp-link aria-label="Contacter par WhatsApp">
+            <span class="contact-action-icon whatsapp-action-icon" aria-hidden="true">
+        <svg viewBox="0 0 32 32" focusable="false">
+          <path d="M16.01 3C8.83 3 3 8.82 3 15.98c0 2.29.6 4.53 1.74 6.5L3 29l6.68-1.72a13.04 13.04 0 0 0 6.33 1.61C23.18 28.89 29 23.07 29 15.98 29 8.82 23.18 3 16.01 3Zm0 23.63c-2.02 0-3.99-.54-5.72-1.57l-.41-.24-3.96 1.02 1.06-3.86-.27-.43a10.66 10.66 0 0 1-1.63-5.57c0-6 4.9-10.89 10.93-10.89s10.93 4.89 10.93 10.89-4.9 10.65-10.93 10.65Zm5.98-8.16c-.33-.16-1.94-.96-2.24-1.07-.3-.11-.52-.16-.74.16-.22.33-.85 1.07-1.04 1.29-.19.22-.38.25-.71.08-.33-.16-1.38-.51-2.63-1.62-.97-.87-1.63-1.94-1.82-2.27-.19-.33-.02-.51.14-.67.15-.15.33-.38.49-.57.16-.19.22-.33.33-.55.11-.22.05-.41-.03-.57-.08-.16-.74-1.78-1.01-2.44-.27-.64-.54-.55-.74-.56h-.63c-.22 0-.57.08-.87.41-.3.33-1.14 1.11-1.14 2.71s1.17 3.15 1.33 3.37c.16.22 2.3 3.51 5.57 4.92.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.62-.09 1.94-.79 2.21-1.55.27-.76.27-1.42.19-1.55-.08-.14-.3-.22-.63-.38Z"/>
+        </svg>
+      </span>
+            <span>Écrire sur WhatsApp</span>
+          </a>
         </div>
 
-        <div class="map-container">
-          <!-- Carte centrée sur Yaoundé, Cameroun -->
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39705.67887748555!2d11.50243345!3d3.848031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bc1b3b8e5f8f%3A0x2f9c3a5c0f4b1e2!2sYaound%C3%A9%2C%20Cameroun!5e0!3m2!1sfr!2scm!4v1696000000000" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Carte de localisation de l'Académie Horizon à Yaoundé">
-          </iframe>
+        <div class="contact-stack">
+          <div class="contact-form-card">
+            <h3>Envoyer un message</h3>
+            <p>Formulaire contact ajouté pour une vraie page Contact premium.</p>
+            <form class="mini-form" action="#" method="post">
+              <input type="text" name="name" placeholder="Votre nom" aria-label="Votre nom" />
+              <input type="email" name="email" placeholder="Votre e-mail" aria-label="Votre e-mail" />
+              <input type="tel" name="phone" placeholder="Téléphone" aria-label="Téléphone" />
+              <select name="subject" aria-label="Sujet">
+                <option value="">Sujet</option>
+                <option>Admission</option>
+                <option>Programme</option>
+                <option>Frais de scolarité</option>
+                <option>Autre demande</option>
+              </select>
+              <textarea name="message" rows="4" placeholder="Votre message" aria-label="Votre message"></textarea>
+              <button class="btn btn-primary form-full" type="submit">Envoyer le message →</button>
+            </form>
+          </div>
+
+          <div class="map-container">
+            <!-- Carte centrée sur Yaoundé, Cameroun -->
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39705.67887748555!2d11.50243345!3d3.848031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bc1b3b8e5f8f%3A0x2f9c3a5c0f4b1e2!2sYaound%C3%A9%2C%20Cameroun!5e0!3m2!1sfr!2scm!4v1696000000000" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Carte de localisation de l'Académie Horizon à Yaoundé">
+            </iframe>
+          </div>
         </div>
       </div>
     </section>
@@ -2698,10 +3448,10 @@
 
       <div class="footer-col">
         <h4>Programmes</h4>
-        <a href="#programmes">Maternelle & Primaire</a>
-        <a href="#programmes">Collège & Lycée</a>
-        <a href="#programmes">Formations professionnelles</a>
-        <a href="#programmes">Institut universitaire</a>
+        <a href="#programme-maternelle">Maternelle & Primaire</a>
+        <a href="#programme-college">Collège & Lycée</a>
+        <a href="#programme-professionnel">Formations professionnelles</a>
+        <a href="#programme-universitaire">Institut universitaire</a>
       </div>
 
       <div class="footer-col">
@@ -2731,8 +3481,22 @@
 
   <!-- Floating WhatsApp and Call Buttons -->
   <div class="floating-contact-actions" aria-label="Contact rapide">
-    <a class="floating-contact-btn floating-whatsapp" href="https://wa.me/237690000000" data-whatsapp-link aria-label="Ouvrir WhatsApp avec l'établissement">💬 WhatsApp</a>
-    <a class="floating-contact-btn floating-call" href="tel:+237690000000" data-call-link aria-label="Appeler l'établissement">📞 Appeler</a>
+    <a class="floating-contact-btn floating-whatsapp" href="https://wa.me/237690000000" data-whatsapp-link aria-label="Ouvrir WhatsApp avec l'établissement">
+      <span class="contact-action-icon whatsapp-action-icon" aria-hidden="true">
+        <svg viewBox="0 0 32 32" focusable="false">
+          <path d="M16.01 3C8.83 3 3 8.82 3 15.98c0 2.29.6 4.53 1.74 6.5L3 29l6.68-1.72a13.04 13.04 0 0 0 6.33 1.61C23.18 28.89 29 23.07 29 15.98 29 8.82 23.18 3 16.01 3Zm0 23.63c-2.02 0-3.99-.54-5.72-1.57l-.41-.24-3.96 1.02 1.06-3.86-.27-.43a10.66 10.66 0 0 1-1.63-5.57c0-6 4.9-10.89 10.93-10.89s10.93 4.89 10.93 10.89-4.9 10.65-10.93 10.65Zm5.98-8.16c-.33-.16-1.94-.96-2.24-1.07-.3-.11-.52-.16-.74.16-.22.33-.85 1.07-1.04 1.29-.19.22-.38.25-.71.08-.33-.16-1.38-.51-2.63-1.62-.97-.87-1.63-1.94-1.82-2.27-.19-.33-.02-.51.14-.67.15-.15.33-.38.49-.57.16-.19.22-.33.33-.55.11-.22.05-.41-.03-.57-.08-.16-.74-1.78-1.01-2.44-.27-.64-.54-.55-.74-.56h-.63c-.22 0-.57.08-.87.41-.3.33-1.14 1.11-1.14 2.71s1.17 3.15 1.33 3.37c.16.22 2.3 3.51 5.57 4.92.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.62-.09 1.94-.79 2.21-1.55.27-.76.27-1.42.19-1.55-.08-.14-.3-.22-.63-.38Z"/>
+        </svg>
+      </span>
+      <span>WhatsApp</span>
+    </a>
+    <a class="floating-contact-btn floating-call" href="tel:+237690000000" data-call-link aria-label="Appeler l'établissement">
+      <span class="contact-action-icon call-action-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z"/>
+        </svg>
+      </span>
+      <span>Appeler</span>
+    </a>
   </div>
 
   <!-- Floating Orizon Pay Button -->
@@ -2852,6 +3616,14 @@
         });
       }
 
+      // Demo forms: prevent page refresh in this static landing page
+      document.querySelectorAll('form').forEach(function(form) {
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
+          alert('Merci ! Votre demande a été enregistrée pour la démo. Connectez ce formulaire à votre backend plus tard.');
+        });
+      });
+
       // Orizon Pay floating button functionality
       const orizonPayBtn = document.getElementById('orizonPayBtn');
       if (orizonPayBtn) {
@@ -2864,9 +3636,6 @@
               block: 'start'
             });
           }
-          
-          // Optional: Show payment modal or redirect (customize as needed)
-          // alert('Orizon Pay : Système de paiement sécurisé. Redirection vers la passerelle de paiement...');
         });
       }
 
