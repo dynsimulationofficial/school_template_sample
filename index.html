@@ -2919,7 +2919,34 @@
   }
 }
 
-</style>
+
+    /* ==================== HERO NAV POPUP EFFECT ==================== */
+    .hero {
+      scroll-margin-top: 115px;
+    }
+
+    .hero.hero-pop-active {
+      animation: heroPopupZoom .9s cubic-bezier(.22, 1, .36, 1);
+      box-shadow: 0 0 0 9999px rgba(7, 17, 34, .18);
+      z-index: 20;
+    }
+
+    @keyframes heroPopupZoom {
+      0% {
+        transform: translateY(36px) scale(.965);
+        filter: brightness(.96);
+      }
+      55% {
+        transform: translateY(0) scale(1.018);
+        filter: brightness(1.03);
+      }
+      100% {
+        transform: translateY(0) scale(1);
+        filter: brightness(1);
+      }
+    }
+
+  </style>
 </head>
 
 <body>
@@ -2936,7 +2963,7 @@
       </a>
 
       <div class="nav-links" aria-label="Liens rapides">
-        <a href="#top" class="home-link">Home</a>
+        <a href="#hero" class="home-link">Home</a>
         <a href="#about-school">About</a>
         <a href="#programmes">Courses</a>
         <a href="#admissions">Admissions</a>
@@ -2955,7 +2982,7 @@
 
     <!-- Mobile dropdown navigation -->
     <nav class="mobile-nav" id="mobileNav" aria-label="Menu mobile">
-      <a href="#top" class="home-link">Home</a>
+      <a href="#hero" class="home-link">Home</a>
       <a href="#about-school">About the School</a>
       <a href="#programmes">Programmes/Courses</a>
       <a href="#admissions">Admissions</a>
@@ -2968,7 +2995,7 @@
 
   <main id="main">
     <!-- 1. HERO (BLANC) -->
-    <section class="hero">
+    <section class="hero" id="hero">
       <div class="container hero-grid">
         <div class="hero-content">
           <p class="eyebrow">Premium school website • Inspired multi-page structure</p>
@@ -3107,7 +3134,7 @@
         </div>
 
         <div class="page-map-grid">
-          <a class="page-tile" href="#top">
+          <a class="page-tile" href="#hero">
             <span>H</span>
             <h3>Home</h3>
             <p>Hero premium, points forts, CTA admissions et aperçu global.</p>
@@ -3818,5 +3845,35 @@
       });
     })();
   </script>
+
+  <script>
+    // Header "Hero" click: scroll to hero section and show popup/zoom effect
+    document.querySelectorAll('a[href="#hero"], a[href="#home"]').forEach(function(link) {
+      link.addEventListener("click", function(event) {
+        var heroSection = document.querySelector("#hero") || document.querySelector("#home") || document.querySelector(".hero");
+        if (!heroSection) return;
+
+        event.preventDefault();
+
+        heroSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+        window.history.replaceState(null, "", "#hero");
+
+        setTimeout(function() {
+          heroSection.classList.remove("hero-pop-active");
+          void heroSection.offsetWidth;
+          heroSection.classList.add("hero-pop-active");
+
+          setTimeout(function() {
+            heroSection.classList.remove("hero-pop-active");
+          }, 950);
+        }, 450);
+      });
+    });
+  </script>
+
 </body>
 </html>
