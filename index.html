@@ -2732,7 +2732,194 @@
   border: 1px solid rgba(255,255,255,.30);
   box-shadow: 0 16px 38px rgba(247,185,85,.24);
 }
-  </style>
+
+
+/* ==================== HERO IMAGE BACKGROUND UPDATE ==================== */
+/* Full hero image background: no top white strip, no heavy white overlay */
+.hero {
+  position: relative;
+  min-height: calc(100vh - 96px);
+  display: flex;
+  align-items: center;
+  padding: 0;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+/* Remove old white decorative shapes from hero */
+.hero::before,
+.hero::after {
+  display: none !important;
+}
+
+.hero-grid {
+  position: static;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - 96px);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 6;
+  max-width: 690px;
+  padding: 90px 0 80px;
+}
+
+.hero-visual {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  border-radius: 0;
+  border: 0;
+  overflow: hidden;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Only light transparent overlay for text readability */
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,.78) 0%,
+    rgba(255,255,255,.48) 34%,
+    rgba(255,255,255,.14) 62%,
+    rgba(255,255,255,0) 100%
+  );
+}
+
+.hero-visual img {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: center right;
+  transform: scale(1.02);
+}
+
+.hero-slides,
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-slide.active {
+  z-index: 1;
+}
+
+.slider-btn {
+  z-index: 7;
+  top: 56%;
+}
+
+.slider-prev {
+  left: auto;
+  right: 92px;
+}
+
+.slider-next {
+  right: 34px;
+}
+
+.slider-dots {
+  left: auto;
+  right: 34px;
+  bottom: 28px;
+  transform: none;
+  z-index: 7;
+}
+
+.floating-card {
+  z-index: 7;
+}
+
+.card-one {
+  top: 190px;
+}
+
+.card-two {
+  top: 340px;
+}
+
+@media (max-width: 1020px) {
+  .hero {
+    min-height: 760px;
+  }
+
+  .hero-grid {
+    min-height: 760px;
+  }
+
+  .hero-content {
+    max-width: 650px;
+    padding: 80px 0 70px;
+  }
+
+  .hero-visual {
+    min-height: 100%;
+  }
+
+  .hero-visual img {
+    min-height: 100%;
+  }
+}
+
+@media (max-width: 680px) {
+  .hero {
+    min-height: 720px;
+  }
+
+  .hero-grid {
+    min-height: 720px;
+  }
+
+  .hero-content {
+    padding: 60px 0 58px;
+  }
+
+  .hero-visual::before {
+    background: linear-gradient(
+      180deg,
+      rgba(255,255,255,.82) 0%,
+      rgba(255,255,255,.55) 48%,
+      rgba(255,255,255,.18) 100%
+    );
+  }
+
+  .hero-visual img {
+    object-position: center;
+  }
+
+  .slider-btn {
+    top: auto;
+    bottom: 78px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.7rem;
+  }
+
+  .slider-prev {
+    right: 70px;
+  }
+
+  .slider-next {
+    right: 22px;
+  }
+}
+
+</style>
 </head>
 
 <body>
@@ -3398,27 +3585,7 @@
           </a>
         </div>
 
-        <div class="contact-stack">
-          <div class="contact-form-card">
-            <h3>Envoyer un message</h3>
-            <p>Formulaire contact ajouté pour une vraie page Contact premium.</p>
-            <form class="mini-form" action="#" method="post">
-              <input type="text" name="name" placeholder="Votre nom" aria-label="Votre nom" />
-              <input type="email" name="email" placeholder="Votre e-mail" aria-label="Votre e-mail" />
-              <input type="tel" name="phone" placeholder="Téléphone" aria-label="Téléphone" />
-              <select name="subject" aria-label="Sujet">
-                <option value="">Sujet</option>
-                <option>Admission</option>
-                <option>Programme</option>
-                <option>Frais de scolarité</option>
-                <option>Autre demande</option>
-              </select>
-              <textarea name="message" rows="4" placeholder="Votre message" aria-label="Votre message"></textarea>
-              <button class="btn btn-primary form-full" type="submit">Envoyer le message →</button>
-            </form>
-          </div>
-
-          <div class="map-container">
+        <div class="map-container contact-map-full">
             <!-- Carte centrée sur Yaoundé, Cameroun -->
             <iframe 
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39705.67887748555!2d11.50243345!3d3.848031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bc1b3b8e5f8f%3A0x2f9c3a5c0f4b1e2!2sYaound%C3%A9%2C%20Cameroun!5e0!3m2!1sfr!2scm!4v1696000000000" 
@@ -3427,7 +3594,6 @@
               referrerpolicy="no-referrer-when-downgrade"
               title="Carte de localisation de l'Académie Horizon à Yaoundé">
             </iframe>
-          </div>
         </div>
       </div>
     </section>
